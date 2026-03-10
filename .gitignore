@@ -1,0 +1,26 @@
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+
+# Logs & generated output
+logs/
+out.txt
+ads/
+ads_export.txt
+split/
+
+# Generated images & plots
+plots/
+ad_stats*.png
+
+# RSS feeds (large, scraped data)
+rss_feeds/
+
+# Data files (one-off / generated)
+10_sample.csv
+episodes.csv
+mp3_list.csv
+sample_mp3_list.csv
