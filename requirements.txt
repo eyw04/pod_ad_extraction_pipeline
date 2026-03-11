@@ -1,0 +1,7 @@
+requests
+pandas
+python-dotenv
+tqdm
+faster-whisper
+matplotlib
+numpy

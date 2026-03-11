@@ -8,12 +8,13 @@ from difflib import SequenceMatcher
 from urllib.parse import quote_plus
 from dotenv import load_dotenv
 
-CSV_IN = "most_subscribed.csv"
-CSV_OUT = "castbox_to_rss.csv"
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+CSV_IN = str(PROJECT_ROOT / "data" / "most_subscribed.csv")
+CSV_OUT = str(PROJECT_ROOT / "data" / "castbox_to_rss.csv")
 
 BASE = "https://api.podcastindex.org/api/1.0"
 
-load_dotenv()  # loads variables from .env
+load_dotenv(PROJECT_ROOT / ".env")
 
 API_KEY = os.getenv("API_KEY")
 API_SECRET = os.getenv("API_SECRET")
@@ -64,7 +65,8 @@ def resolve_rss(title, author):
 
 def main():
     df = pd.read_csv(CSV_IN)
-    os.makedirs("rss_feeds", exist_ok=True)
+    rss_dir = PROJECT_ROOT / "rss_feeds"
+    os.makedirs(rss_dir, exist_ok=True)
 
     out_rows = []
     for i, row in df.iterrows():
@@ -87,7 +89,7 @@ def main():
             try:
                 resp = requests.get(str(rss).strip(), timeout=30)
                 resp.raise_for_status()
-                Path("rss_feeds", f"{i}.rss.xml").write_text(resp.text, encoding="utf-8", errors="replace")
+                (rss_dir / f"{i}.rss.xml").write_text(resp.text, encoding="utf-8", errors="replace")
             except Exception as e:
                 print(f"  [{i}] download failed: {e}")
 

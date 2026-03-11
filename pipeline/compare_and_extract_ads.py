@@ -29,8 +29,8 @@ from pathlib import Path
 
 from faster_whisper import WhisperModel
 
-# Add Podcast-Ad-Detection to the import path
-sys.path.insert(0, str(Path(__file__).parent / "Podcast-Ad-Detection"))
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(PROJECT_ROOT / "Podcast-Ad-Detection"))
 
 from core.mp3_parser import scan_mp3_frames, parse_header
 from core.aligner import quick_align_stats, decide_mode

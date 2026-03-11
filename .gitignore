@@ -19,7 +19,7 @@ ad_stats*.png
 # RSS feeds (large, scraped data)
 rss_feeds/
 
-# Data files (one-off / generated)
+# Generated data files
 10_sample.csv
 episodes.csv
 mp3_list.csv

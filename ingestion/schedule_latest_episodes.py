@@ -25,8 +25,9 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 DEFAULT_DB = Path("/shared/6/projects/podcast-ads/pipeline.db")
-DEFAULT_RSS_DIR = Path(__file__).parent / "rss_feeds"
-DEFAULT_MAPPING_CSV = Path(__file__).parent / "castbox_to_rss.csv"
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+DEFAULT_RSS_DIR = PROJECT_ROOT / "rss_feeds"
+DEFAULT_MAPPING_CSV = PROJECT_ROOT / "data" / "castbox_to_rss.csv"
 DEFAULT_DAYS = "Mon,Tue,Wed,Thu,Fri,Sat,Sun"
 
 

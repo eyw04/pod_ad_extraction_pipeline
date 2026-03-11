@@ -34,7 +34,7 @@ import sys
 from pathlib import Path
 import numpy as np
 
-sys.path.insert(0, str(Path(__file__).resolve().parent / "Podcast-Ad-Detection"))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "Podcast-Ad-Detection"))
 
 from core.mp3_parser import scan_mp3_frames, parse_header
 

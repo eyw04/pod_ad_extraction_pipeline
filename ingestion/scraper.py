@@ -15,11 +15,11 @@ from datetime import date
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
-CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DB_PATH = "/shared/6/projects/podcast-ads/pipeline.db"
-RSS_FOLDER = os.path.join(CURRENT_DIR, "rss_feeds")
-MOST_SUBSCRIBED_CSV = os.path.join(CURRENT_DIR, "most_subscribed.csv")
-CASTBOX_TO_RSS_CSV = os.path.join(CURRENT_DIR, "castbox_to_rss.csv")
+RSS_FOLDER = os.path.join(PROJECT_ROOT, "rss_feeds")
+MOST_SUBSCRIBED_CSV = os.path.join(PROJECT_ROOT, "data", "most_subscribed.csv")
+CASTBOX_TO_RSS_CSV = os.path.join(PROJECT_ROOT, "data", "castbox_to_rss.csv")
 
 # XML namespaces used in podcast RSS feeds
 NS = {
@@ -155,7 +155,7 @@ def load_most_subscribed_csv():
 
 def init_db(conn):
     """Create tables from schema.sql if they don't already exist."""
-    schema_path = os.path.join(CURRENT_DIR, "schema.sql")
+    schema_path = os.path.join(PROJECT_ROOT, "schema.sql")
     if os.path.exists(schema_path):
         with open(schema_path, encoding="utf-8") as f:
             conn.executescript(f.read())
